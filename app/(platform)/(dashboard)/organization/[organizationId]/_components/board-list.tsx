@@ -1,4 +1,3 @@
-import React from 'react';
 import { auth } from '@clerk/nextjs';
 import { User2 } from 'lucide-react';
 import { FormPopover } from '@/components/form/form-popover';
