@@ -7,33 +7,46 @@ import { revalidatePath } from 'next/cache';
 import { createSafeAction } from '@/lib/create-safe-action';
 import { CreateBoard } from './schema';
 
-const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId } = auth();
+const handler = async (data: InputType): Promise<ReturnType<any>> => {
+	const { userId, orgId } = auth();
 
-  if (!userId) {
-    return {
-      error: 'Unauthorized',
-    };
-  }
+	if (!userId || !orgId) {
+		return {
+			error: 'Unauthorized',
+		};
+	}
 
-  const { title } = data;
-  let board;
+	const { title, image } = data;
+	const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] = image.split('|');
 
-  try {
-    board = await db.board.create({
-      data: {
-        title,
-      },
-    });
-  } catch (error) {
-    return {
-      error: 'Failed to create',
-    };
-  }
+	if (!imageId || !imageThumbUrl || !imageFullUrl || !imageLinkHTML || !imageUserName) {
+		return {
+			error: 'Missing fields. Failed to create board.',
+		};
+	}
+	let board;
 
-  revalidatePath(`/board/${board.id}`);
+	try {
+		board = await db.board.create({
+			data: {
+				title,
+				orgId,
+				imageId,
+				imageThumbUrl,
+				imageFullUrl,
+				imageUserName,
+				imageLinkHTML,
+			},
+		});
+	} catch (error) {
+		return {
+			error: 'Failed to create',
+		};
+	}
 
-  return { data: board };
+	revalidatePath(`/board/${board.id}`);
+
+	return { data: board };
 };
 
 export const createBoard = createSafeAction(CreateBoard, handler);
