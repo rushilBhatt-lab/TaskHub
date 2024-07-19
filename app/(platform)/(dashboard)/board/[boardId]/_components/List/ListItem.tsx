@@ -4,8 +4,8 @@ import { ListWithCards } from '@/types';
 
 import CardForm from '../Card/CardForm';
 import { cn } from '@/lib/utils';
-import ListHeader from './listHeader';
-import CardItem from '../Card/cardItem';
+import ListHeader from './ListHeader';
+import CardItem from '../Card/CardItem';
 
 interface ListItemProps {
 	data: ListWithCards;

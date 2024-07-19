@@ -5,9 +5,9 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { useCardModal } from '@/hooks/use-card-modal';
 import { CardWithList } from '@/types';
 import { fetcher } from '@/lib/fetcher';
-import Header from './header';
-import Description from './description';
-import Actions from './actions';
+import Header from './Header';
+import Description from './Description';
+import Actions from './Actions';
 
 const CardModal = () => {
 	const id = useCardModal((state) => state.id);

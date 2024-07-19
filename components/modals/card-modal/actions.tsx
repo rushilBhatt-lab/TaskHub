@@ -5,8 +5,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { CardWithList } from '@/types';
 import { Copy, TrashIcon } from 'lucide-react';
 import React from 'react';
-import { DeleteCard } from '@/actions/delete-card/schema';
-import { CopyCard } from '@/actions/copy-card/schema';
 import { useAction } from '@/hooks/useAction';
 import { copyCard } from '@/actions/copy-card';
 import { deleteCard } from '@/actions/delete-card';

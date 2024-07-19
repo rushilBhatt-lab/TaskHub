@@ -2,7 +2,6 @@
 
 import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { useAction } from '@/hooks/useAction';
-import { CreateBoard } from '@/actions/create-board/schema';
 import { FormInput } from './FormInput';
 import { FormSubmit } from './FormSubmit';
 import { Button } from '../ui/button';
