@@ -7,8 +7,8 @@ import { CardWithList } from '@/types';
 import { fetcher } from '@/lib/fetcher';
 
 import Description from './Description';
-import Actions from './actions';
-import Header from './header';
+import Actions from './Actions';
+import Header from './Header';
 
 const CardModal = () => {
 	const id = useCardModal((state) => state.id);
