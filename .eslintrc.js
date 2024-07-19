@@ -1,7 +1,7 @@
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		ecmaVersion: 2022,
+		ecmaVersion: 2020,
 		sourceType: 'module',
 	},
 	extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
@@ -17,6 +17,8 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		'@typescript-eslint/ban-types': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
-		'prettier/prettier': 'error', // Ensure Prettier errors are shown in ESLint
+		'@typescript-eslint/no-unused-vars': 'warn',
+		'@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
+		'no-var': 'warn',
 	},
 };

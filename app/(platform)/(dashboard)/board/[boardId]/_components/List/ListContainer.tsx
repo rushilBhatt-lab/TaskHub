@@ -75,7 +75,7 @@ const ListContainer = ({ data, boardId }: ListContainerProps) => {
 		// user moves a card
 
 		if (type === 'card') {
-			let newOrderedData = [...orderedData];
+			const newOrderedData = [...orderedData];
 			//source and destination list
 
 			const sourceList = newOrderedData.find((list) => list.id === source.droppableId);
