@@ -7,10 +7,10 @@ import { useQueryClient } from '@tanstack/react-query';
 import { AlignLeft } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useEventListener, useOnClickOutside } from 'usehooks-ts';
-import { FormTextarea } from '@/components/form/form-textarea';
-import { FormSubmit } from '@/components/form/form-submit';
+import { FormTextarea } from '@/components/form/FormTextarea';
+import { FormSubmit } from '@/components/form/FormSubmit';
 import { Button } from '@/components/ui/button';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { updateCard } from '@/actions/update-card';
 import { toast } from 'sonner';
 

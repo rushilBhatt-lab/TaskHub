@@ -2,7 +2,7 @@ import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
 import { Plus } from 'lucide-react';
-import { FormPopover } from '@/components/form/form-popover';
+import { FormPopover } from '@/components/form/FormPopover';
 import { MobileSidebar } from './MobileSidebar';
 const NavBar = () => {
   return (

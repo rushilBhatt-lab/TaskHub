@@ -9,9 +9,9 @@ import {
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal, X } from 'lucide-react';
-import { FormSubmit } from '@/components/form/form-submit';
+import { FormSubmit } from '@/components/form/FormSubmit';
 import { Separator } from '@/components/ui/separator';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { deleteList } from '@/actions/delete-list';
 import { toast } from 'sonner';
 import { ElementRef, useRef } from 'react';
@@ -63,7 +63,7 @@ export const ListOptions = ({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="h-auto w-auto p-2" variant={'ghost'}>
+        <Button className="h-auto w-auto p-2" variant="ghost">
           <MoreHorizontal className="w-4 h-4" />
         </Button>
       </PopoverTrigger>

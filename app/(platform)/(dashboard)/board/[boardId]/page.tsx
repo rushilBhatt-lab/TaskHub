@@ -1,7 +1,7 @@
 import { auth } from '@clerk/nextjs';
 import { db } from '@/lib/db';
 import { redirect } from 'next/navigation';
-import ListContainer from './_components/list-container';
+import ListContainer from './_components/List/listcontainer';
 
 interface BoardIdPageProps {
   params: {

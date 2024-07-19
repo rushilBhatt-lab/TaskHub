@@ -2,13 +2,13 @@
 
 import { useState, useRef, ElementRef } from 'react';
 import { Plus, X } from 'lucide-react';
-import ListWrapper from './list-wrapper';
+import ListWrapper from './ListWrapper';
 import { useEventListener, useOnClickOutside } from 'usehooks-ts';
-import { FormInput } from '@/components/form/form-input';
+import { FormInput } from '@/components/form/FormInput';
 import { useParams, useRouter } from 'next/navigation';
-import { FormSubmit } from '@/components/form/form-submit';
+import { FormSubmit } from '@/components/form/FormSubmit';
 import { Button } from '@/components/ui/button';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { createList } from '@/actions/create-list';
 import { toast } from 'sonner';
 

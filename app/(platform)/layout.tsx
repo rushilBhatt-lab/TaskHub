@@ -1,5 +1,5 @@
-import { ModalProvider } from '@/components/providers/modal-provider';
-import QueryProvider from '@/components/providers/query-provider';
+import { ModalProvider } from '@/components/providers/ModelProvider';
+import QueryProvider from '@/components/providers/QueryProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'sonner';
 

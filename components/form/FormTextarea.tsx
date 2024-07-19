@@ -4,7 +4,7 @@ import { KeyboardEventHandler, forwardRef } from 'react';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '../ui/textarea';
 import { cn } from '@/lib/utils';
-import { FormErrors } from './form-errors';
+import { FormErrors } from './FormErrors';
 import { useFormStatus } from 'react-dom';
 
 interface FormTextareaProps {

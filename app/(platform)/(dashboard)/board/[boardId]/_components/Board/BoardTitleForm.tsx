@@ -2,9 +2,9 @@
 import { ElementRef, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Board } from '@prisma/client';
-import { FormInput } from '@/components/form/form-input';
+import { FormInput } from '@/components/form/FormInput';
 import { UpdateBoard } from '@/actions/update-board/schema';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { updateBoard } from '@/actions/update-board';
 import { toast } from 'sonner';
 

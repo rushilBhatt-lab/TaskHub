@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs';
 import { User2 } from 'lucide-react';
-import { FormPopover } from '@/components/form/form-popover';
+import { FormPopover } from '@/components/form/FormPopover';
 import { db } from '@/lib/db';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';

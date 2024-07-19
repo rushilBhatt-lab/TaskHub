@@ -2,10 +2,10 @@
 
 import { createCard } from '@/actions/create-card';
 import { CreateCard } from '@/actions/create-card/schema';
-import { FormSubmit } from '@/components/form/form-submit';
-import { FormTextarea } from '@/components/form/form-textarea';
+import { FormSubmit } from '@/components/form/FormSubmit';
+import { FormTextarea } from '@/components/form/FormTextarea';
 import { Button } from '@/components/ui/button';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { Plus, X } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import {

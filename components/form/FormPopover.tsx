@@ -6,15 +6,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '../ui/popover';
-import { useAction } from '@/hooks/use-action';
+import { useAction } from '@/hooks/useAction';
 import { CreateBoard } from '@/actions/create-board/schema';
-import { FormInput } from './form-input';
-import { FormSubmit } from './form-submit';
+import { FormInput } from './FormInput';
+import { FormSubmit } from './FormSubmit';
 import { Button } from '../ui/button';
 import { X } from 'lucide-react';
 import { createBoard } from '@/actions/create-board';
 import { toast } from 'sonner';
-import { FormPicker } from './form-picker';
+import { FormPicker } from './FormPicker';
 import { ElementRef, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
