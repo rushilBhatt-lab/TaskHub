@@ -8,57 +8,45 @@ import { createSafeAction } from '@/lib/create-safe-action';
 import { CreateBoard } from './schema';
 
 const handler = async (data: InputType): Promise<ReturnType<any>> => {
-  const { userId, orgId } = auth();
+	const { userId, orgId } = auth();
 
-  if (!userId || !orgId) {
-    return {
-      error: 'Unauthorized',
-    };
-  }
+	if (!userId || !orgId) {
+		return {
+			error: 'Unauthorized',
+		};
+	}
 
-  const { title, image } = data;
-  const [
-    imageId,
-    imageThumbUrl,
-    imageFullUrl,
-    imageLinkHTML,
-    imageUserName,
-  ] = image.split('|');
+	const { title, image } = data;
+	const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] = image.split('|');
 
-  if (
-    !imageId ||
-    !imageThumbUrl ||
-    !imageFullUrl ||
-    !imageLinkHTML ||
-    !imageUserName
-  ) {
-    return {
-      error: 'Missing fields. Failed to create board.',
-    };
-  }
-  let board;
+	if (!imageId || !imageThumbUrl || !imageFullUrl || !imageLinkHTML || !imageUserName) {
+		return {
+			error: 'Missing fields. Failed to create board.',
+		};
+	}
+	let board;
 
-  try {
-    board = await db.board.create({
-      data: {
-        title,
-        orgId,
-        imageId,
-        imageThumbUrl,
-        imageFullUrl,
-        imageUserName,
-        imageLinkHTML,
-      },
-    });
-  } catch (error) {
-    return {
-      error: 'Failed to create',
-    };
-  }
+	try {
+		board = await db.board.create({
+			data: {
+				title,
+				orgId,
+				imageId,
+				imageThumbUrl,
+				imageFullUrl,
+				imageUserName,
+				imageLinkHTML,
+			},
+		});
+	} catch (error) {
+		return {
+			error: 'Failed to create',
+		};
+	}
 
-  revalidatePath(`/board/${board.id}`);
+	revalidatePath(`/board/${board.id}`);
 
-  return { data: board };
+	return { data: board };
 };
 
 export const createBoard = createSafeAction(CreateBoard, handler);

@@ -8,40 +8,40 @@ import { createSafeAction } from '@/lib/create-safe-action';
 import { UpdateCard } from './schema';
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId, orgId } = auth();
+	const { userId, orgId } = auth();
 
-  if (!userId || !orgId)
-    return {
-      error: 'Unauthorized',
-    };
+	if (!userId || !orgId)
+		return {
+			error: 'Unauthorized',
+		};
 
-  const { id, boardId, ...values } = data;
+	const { id, boardId, ...values } = data;
 
-  let card;
+	let card;
 
-  try {
-    card = await db.card.update({
-      where: {
-        id,
-        list: {
-          board: {
-            orgId,
-          },
-        },
-      },
-      data: {
-        ...values,
-      },
-    });
-  } catch (error) {
-    return {
-      error: 'Failed to update',
-    };
-  }
+	try {
+		card = await db.card.update({
+			where: {
+				id,
+				list: {
+					board: {
+						orgId,
+					},
+				},
+			},
+			data: {
+				...values,
+			},
+		});
+	} catch (error) {
+		return {
+			error: 'Failed to update',
+		};
+	}
 
-  revalidatePath(`/board/${boardId}`);
+	revalidatePath(`/board/${boardId}`);
 
-  return { data: card };
+	return { data: card };
 };
 
 export const updateCard = createSafeAction(UpdateCard, handler);

@@ -8,47 +8,44 @@ import { createSafeAction } from '@/lib/create-safe-action';
 import { UpdateCardOrder } from './schema';
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId, orgId } = auth();
+	const { userId, orgId } = auth();
 
-  if (!userId || !orgId) {
-    return {
-      error: 'Unauthorized',
-    };
-  }
+	if (!userId || !orgId) {
+		return {
+			error: 'Unauthorized',
+		};
+	}
 
-  const { items, boardId } = data;
-  let updatedCard;
+	const { items, boardId } = data;
+	let updatedCard;
 
-  try {
-    const transaction = items.map((card) =>
-      db.card.update({
-        where: {
-          id: card.id,
-          list: {
-            board: {
-              orgId,
-            },
-          },
-        },
-        data: {
-          order: card.order,
-          listId: card.listId,
-        },
-      })
-    );
+	try {
+		const transaction = items.map((card) =>
+			db.card.update({
+				where: {
+					id: card.id,
+					list: {
+						board: {
+							orgId,
+						},
+					},
+				},
+				data: {
+					order: card.order,
+					listId: card.listId,
+				},
+			}),
+		);
 
-    updatedCard = await db.$transaction(transaction);
-  } catch (error) {
-    return {
-      error: 'failed to reorder',
-    };
-  }
+		updatedCard = await db.$transaction(transaction);
+	} catch (error) {
+		return {
+			error: 'failed to reorder',
+		};
+	}
 
-  revalidatePath(`/board/${boardId}`);
-  return { data: updatedCard };
+	revalidatePath(`/board/${boardId}`);
+	return { data: updatedCard };
 };
 
-export const updateCardOrder = createSafeAction(
-  UpdateCardOrder,
-  handler
-);
+export const updateCardOrder = createSafeAction(UpdateCardOrder, handler);
