@@ -6,7 +6,7 @@ import { useCardModal } from '@/hooks/useCardModal';
 import { CardWithList } from '@/types';
 import { fetcher } from '@/lib/fetcher';
 
-import Description from './Description';
+import Description from './description';
 import Actions from './actions';
 import Header from './header';
 
