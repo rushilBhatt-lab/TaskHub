@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { useCardModal } from '@/hooks/use-card-modal';
+import { useCardModal } from '@/hooks/useCardModal';
 import { CardWithList } from '@/types';
 import { fetcher } from '@/lib/fetcher';
 

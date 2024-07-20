@@ -9,7 +9,7 @@ import { useAction } from '@/hooks/useAction';
 import { copyCard } from '@/actions/copy-card';
 import { deleteCard } from '@/actions/delete-card';
 import { useParams } from 'next/navigation';
-import { useCardModal } from '@/hooks/use-card-modal';
+import { useCardModal } from '@/hooks/useCardModal';
 import { toast } from 'sonner';
 
 interface ActiionsProps {
