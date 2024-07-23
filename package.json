@@ -1,5 +1,5 @@
 {
-	"name": "task-manager",
+	"name": "task-hub",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -11,12 +11,13 @@
 		"lint": "eslint --ext .ts --ext .tsx . --cache",
 		"lint:ci": "eslint --ext .ts --ext .tsx .",
 		"lint-warn": "eslint --ext .ts --ext .tsx . -c .eslintrc.warn.json",
-		"postinstall": "prisma generate"
+		"postinstall": "prisma generate",
+		"migrate:deploy": "prisma migrate deploy"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.29.5",
 		"@hello-pangea/dnd": "^16.6.0",
-		"@prisma/client": "^5.10.2",
+		"@prisma/client": "^5.17.0",
 		"@radix-ui/react-accordion": "^1.1.2",
 		"@radix-ui/react-dialog": "^1.1.1",
 		"@radix-ui/react-label": "^2.1.0",
@@ -24,6 +25,7 @@
 		"@radix-ui/react-separator": "^1.0.3",
 		"@radix-ui/react-slot": "^1.0.2",
 		"@tanstack/react-query": "^5.51.9",
+		"@vercel/postgres": "^0.9.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
 		"lodash": "^4.17.21",
@@ -53,7 +55,7 @@
 		"eslint-plugin-prettier": "^5.2.1",
 		"postcss": "^8",
 		"prettier": "^3.3.3",
-		"prisma": "^5.9.1",
+		"prisma": "^5.17.0",
 		"tailwindcss": "^3.3.0",
 		"typescript": "^5"
 	}
