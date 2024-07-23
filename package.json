@@ -11,7 +11,8 @@
 		"lint": "eslint --ext .ts --ext .tsx . --cache",
 		"lint:ci": "eslint --ext .ts --ext .tsx .",
 		"lint-warn": "eslint --ext .ts --ext .tsx . -c .eslintrc.warn.json",
-		"postinstall": "prisma generate"
+		"postinstall": "prisma generate",
+		"migrate:deploy": "prisma migrate deploy"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.29.5",
