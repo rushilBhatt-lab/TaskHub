@@ -1,7 +1,6 @@
 'use client';
 
 import { createCard } from '@/actions/create-card';
-import { CreateCard } from '@/actions/create-card/schema';
 import { FormSubmit } from '@/components/form/FormSubmit';
 import { FormTextarea } from '@/components/form/FormTextarea';
 import { Button } from '@/components/ui/button';

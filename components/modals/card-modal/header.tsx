@@ -1,7 +1,7 @@
 'use client';
 
 import { toast } from 'sonner';
-import { ElementRef, useRef, useState } from 'react';
+import { ElementRef, useRef } from 'react';
 import { Layout } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
@@ -36,8 +36,6 @@ const Header = ({ data }: HeaderProps) => {
 
 	const inputRef = useRef<ElementRef<'input'>>(null);
 
-	const [title, setTitle] = useState(data.title);
-
 	const onBlur = () => {
 		inputRef.current?.form?.requestSubmit();
 	};
@@ -61,7 +59,7 @@ const Header = ({ data }: HeaderProps) => {
 						ref={inputRef}
 						onBlur={onBlur}
 						id="title"
-						defaultValue={title}
+						defaultValue={data.title}
 						className="font-semibold text-xl px-1 text-neutral-700 bg-transparent border-transparent relative -left-1.5 w-[95%] focus-visible:bg-white focus-visible:border-input mb-0.5 truncate"
 					/>
 				</form>
