@@ -5,7 +5,6 @@ import { InputType, ReturnType } from './types';
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { createSafeAction } from '@/lib/create-safe-action';
-import { UpdateList } from '../update-list/schema';
 import { UpdateListOrder } from './schema';
 
 const handler = async (data: InputType): Promise<ReturnType> => {

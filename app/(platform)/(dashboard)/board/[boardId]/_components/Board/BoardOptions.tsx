@@ -2,10 +2,8 @@
 import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal, X } from 'lucide-react';
-import { DeleteBoard } from '@/actions/delete-board/schema';
 import { useAction } from '@/hooks/useAction';
 import { deleteBoard } from '@/actions/delete-board';
-import { error } from 'console';
 import { toast } from 'sonner';
 
 interface BoardOptionsProps {
