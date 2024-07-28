@@ -1,4 +1,3 @@
-import { ElementRef, useRef, useState } from 'react';
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { ListWithCards } from '@/types';
 
@@ -6,6 +5,7 @@ import CardForm from '../Card/CardForm';
 import { cn } from '@/lib/utils';
 import ListHeader from './ListHeader';
 import CardItem from '../Card/CardItem';
+import { useEditing } from '@/hooks/useEditing';
 
 interface ListItemProps {
 	data: ListWithCards;
@@ -13,19 +13,7 @@ interface ListItemProps {
 }
 
 const ListItem = ({ data, index }: ListItemProps) => {
-	const textareaRef = useRef<ElementRef<'textarea'>>(null);
-	const [isEditing, setIsEditing] = useState(false);
-
-	const disableEditing = () => {
-		setIsEditing(false);
-	};
-
-	const enableEditing = () => {
-		setIsEditing(true);
-		setTimeout(() => {
-			textareaRef.current?.focus();
-		});
-	};
+	const { isEditing, enableEditing, disableEditing, textareaRef } = useEditing();
 
 	return (
 		<Draggable draggableId={data.id} index={index}>

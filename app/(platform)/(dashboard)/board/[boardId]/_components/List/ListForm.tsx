@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useRef, ElementRef } from 'react';
 import { Plus, X } from 'lucide-react';
 import ListWrapper from './ListWrapper';
 import { useEventListener, useOnClickOutside } from 'usehooks-ts';
@@ -11,24 +10,12 @@ import { Button } from '@/components/ui/button';
 import { useAction } from '@/hooks/useAction';
 import { createList } from '@/actions/create-list';
 import { toast } from 'sonner';
+import { useEditing } from '@/hooks/useEditing';
 
 const ListForm = () => {
 	const router = useRouter();
 	const params = useParams();
-	const formRef = useRef<ElementRef<'form'>>(null);
-	const inputRef = useRef<ElementRef<'input'>>(null);
-	const [isEditing, setIsEditing] = useState(false);
-
-	const enableEditing = () => {
-		setIsEditing(true);
-		setTimeout(() => {
-			inputRef.current?.focus();
-		});
-	};
-
-	const disableEditing = () => {
-		setIsEditing(false);
-	};
+	const { isEditing, enableEditing, disableEditing, inputRef, formRef } = useEditing();
 
 	const { execute, fieldErrors } = useAction(createList, {
 		onSuccess: (data) => {

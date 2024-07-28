@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, ElementRef } from 'react';
+import { useState } from 'react';
 import { List } from '@prisma/client';
 import { useEventListener } from 'usehooks-ts';
 import { FormInput } from '@/components/form/FormInput';
@@ -7,6 +7,7 @@ import { useAction } from '@/hooks/useAction';
 import { toast } from 'sonner';
 import { updateList } from '@/actions/update-list';
 import { ListOptions } from './ListOptions';
+import { useEditing } from '@/hooks/useEditing';
 
 interface ListHeaderProps {
 	data: List;
@@ -14,22 +15,8 @@ interface ListHeaderProps {
 }
 
 const ListHeader = ({ data, onAddCard }: ListHeaderProps) => {
-	const formRef = useRef<ElementRef<'form'>>(null);
-	const inputRef = useRef<ElementRef<'input'>>(null);
 	const [title, setTitle] = useState(data.title);
-	const [isEditing, setIsEditing] = useState(false);
-
-	const enabledEditing = () => {
-		setIsEditing(true);
-		setTimeout(() => {
-			inputRef.current?.focus();
-			inputRef.current?.select();
-		});
-	};
-
-	const disableEditing = () => {
-		setIsEditing(false);
-	};
+	const { isEditing, enableEditing, disableEditing, inputRef, formRef } = useEditing();
 
 	const { execute } = useAction(updateList, {
 		onSuccess: (data) => {
@@ -82,7 +69,7 @@ const ListHeader = ({ data, onAddCard }: ListHeaderProps) => {
 					<button type="submit" hidden></button>
 				</form>
 			) : (
-				<div onClick={enabledEditing} className="w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent">
+				<div onClick={enableEditing} className="w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent">
 					{title}
 				</div>
 			)}

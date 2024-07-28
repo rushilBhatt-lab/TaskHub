@@ -1,18 +1,17 @@
 'use client';
 
-import { ElementRef, useRef, useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CardWithList } from '@/types';
 import { useQueryClient } from '@tanstack/react-query';
 import { AlignLeft } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { useEventListener, useOnClickOutside } from 'usehooks-ts';
 import { FormTextarea } from '@/components/form/FormTextarea';
 import { FormSubmit } from '@/components/form/FormSubmit';
 import { Button } from '@/components/ui/button';
 import { useAction } from '@/hooks/useAction';
 import { updateCard } from '@/actions/update-card';
 import { toast } from 'sonner';
+import { useEditing } from '@/hooks/useEditing';
 
 interface DescriptionProps {
 	data: CardWithList;
@@ -21,29 +20,7 @@ interface DescriptionProps {
 const Description = ({ data }: DescriptionProps) => {
 	const queryClient = useQueryClient();
 	const params = useParams();
-	const [isEditing, setIsEditing] = useState(false);
-	const textareaRef = useRef<ElementRef<'textarea'>>(null);
-	const formRef = useRef<ElementRef<'form'>>(null);
-
-	const enableEditing = () => {
-		setIsEditing(true);
-		setTimeout(() => {
-			textareaRef.current?.focus();
-		});
-	};
-
-	const disableEditing = () => {
-		setIsEditing(false);
-	};
-
-	const onKeyDown = (e: KeyboardEvent) => {
-		if (e.key === 'Escape') {
-			disableEditing();
-		}
-	};
-
-	useEventListener('keydown', onKeyDown);
-	useOnClickOutside(formRef, disableEditing);
+	const { isEditing, enableEditing, disableEditing, textareaRef, formRef } = useEditing();
 
 	const { execute, fieldErrors } = useAction(updateCard, {
 		onSuccess: (data) => {
