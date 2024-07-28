@@ -37,9 +37,9 @@ export const useEditing = () => {
 	useOnClickOutside(formRef, disableEditing);
 
 	return {
-		isEditing,
 		enableEditing,
 		disableEditing,
+		isEditing,
 		textareaRef,
 		formRef,
 		inputRef,

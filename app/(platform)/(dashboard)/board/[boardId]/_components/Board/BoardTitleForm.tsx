@@ -12,6 +12,7 @@ interface BoardTitleFormProps {
 	data: Board;
 }
 const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
+	const [title, setTitle] = useState(data.title);
 	const { isEditing, enableEditing, disableEditing, inputRef, formRef } = useEditing();
 	const { execute } = useAction(updateBoard, {
 		onSuccess: (data) => {
@@ -24,8 +25,6 @@ const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
 			toast.error(error);
 		},
 	});
-
-	const [title, setTitle] = useState(data.title);
 
 	const onSubmit = (formData: FormData) => {
 		const title = formData.get('title') as string;
