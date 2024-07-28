@@ -20,9 +20,11 @@ interface Props {
 	organization: Organization;
 	onExpand: (id: string) => void;
 }
+
 const NavItem = ({ isExpanded, isActive, organization, onExpand }: Props) => {
 	const router = useRouter();
 	const pathname = usePathname();
+
 	const routes = [
 		{
 			label: 'Boards',
@@ -33,17 +35,22 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: Props) => {
 			label: 'Activity',
 			icon: <Activity className="h-4 w-4 mr-2" />,
 			href: `/organization/${organization.id}/activity`,
+			isHidden: process.env.REACT_APP_SHOW_EXTRA_ROUTES !== 'true',
 		},
 		{
 			label: 'Setting',
 			icon: <Settings className="h-4 w-4 mr-2" />,
 			href: `/organization/${organization.id}/settings`,
+			isHidden: process.env.REACT_APP_SHOW_EXTRA_ROUTES !== 'true',
 		},
 	];
+
+	const visibleRoutes = routes.filter((route) => !route.isHidden);
 
 	const onClick = (href: string) => {
 		router.push(href);
 	};
+
 	return (
 		<AccordionItem value={organization.id} className="border-none">
 			<AccordionTrigger
@@ -55,13 +62,13 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: Props) => {
 			>
 				<div className="flex items-center gap-x-2">
 					<div className="h-7 w-7 relative">
-						<Image fill src={organization.imageUrl} alt="Orgnization Image" className="rounded-sm object-cover" />
+						<Image fill src={organization.imageUrl} alt="Organization Image" className="rounded-sm object-cover" />
 					</div>
 					<span className="font-medium text-sm">{organization.name}</span>
 				</div>
 			</AccordionTrigger>
 			<AccordionContent className="pt-1 text-neutral-700">
-				{routes.map((route) => (
+				{visibleRoutes.map((route) => (
 					<Button
 						key={route.href}
 						size="sm"
@@ -78,7 +85,7 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: Props) => {
 	);
 };
 
-NavItem.skeleton = function SkeletionNavItem() {
+NavItem.skeleton = function SkeletonNavItem() {
 	return (
 		<div className="flex items-center gap-x-2">
 			<div className="w-10 h-10 relative shrink-0">
@@ -88,4 +95,5 @@ NavItem.skeleton = function SkeletionNavItem() {
 		</div>
 	);
 };
+
 export default NavItem;
