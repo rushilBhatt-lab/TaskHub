@@ -26,3 +26,10 @@ jobs:
         run: npm run prettier:check
       - name: Run linter
         run: npm run lint:ci
+      - name: Set environment variable for routes
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            echo "REACT_APP_SHOW_EXTRA_ROUTES=false" >> $GITHUB_ENV
+          else
+            echo "REACT_APP_SHOW_EXTRA_ROUTES=true" >> $GITHUB_ENV
+          fi
