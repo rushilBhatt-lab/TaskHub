@@ -45,7 +45,7 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: Props) => {
 		},
 	];
 
-	const visibleRoutes = routes.filter((route) => !route.isHidden);
+	const visibleRoutes = routes.filter((route) => route.isHidden);
 
 	const onClick = (href: string) => {
 		router.push(href);
